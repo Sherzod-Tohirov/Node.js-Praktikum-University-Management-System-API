@@ -21,17 +21,17 @@ CREATE TABLE students (
   course_of_study VARCHAR(255) NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
   updated_at TIMESTAMP DEFAULT NULL
-)
+);
 
 -- enrollments table creation
 CREATE TABLE enrollments (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(), 
   student_id UUID REFERENCES students(id), 
   course_id UUID REFERENCES courses(id), 
-  entrollment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  enrollment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
   updated_at TIMESTAMP DEFAULT NULL
-)
+);
 
 --insert example data
 INSERT INTO courses (id, course_name, instructor, schedule, max_students) VALUES ('95b03502-4ce3-4dd3-90e8-11836029fad7','Introduction to Computer Science', 'Dr. Jane Smith', 'Mon-Wed-Fri 10:00-11:00 AM', 30);
@@ -48,11 +48,13 @@ INSERT INTO enrollments (id, student_id, course_id) VALUES ('80c53502-4ce3-4dd3-
 --   "max_students": 35
 -- }
 
-UPDATE courses SET instructor = 'Dr. John Doe', schedule = 'Tue-Thu 2:00-3:30 PM', max_students = 35 WHERE id = '95b03502-4ce3-4dd3-90e8-11836029fad7'
+UPDATE courses SET instructor = 'Dr. John Doe', schedule = 'Tue-Thu 2:00-3:30 PM', max_students = 35 WHERE id = '95b03502-4ce3-4dd3-90e8-11836029fad7';
 
 
--- delete course data
-DELETE FROM courses WHERE id = '95b03502-4ce3-4dd3-90e8-11836029fad7'
+-- Tizimdan kursni olib tashlang.
+-- Bu yerda delete xatolik keltirib chiqarishi mumkin foregin key bilan bog'liq, 
+-- unga bo'g'liq entrollments jadvalini o'chirish kerak.
+DELETE FROM courses WHERE id = '95b03502-4ce3-4dd3-90e8-11836029fad7';
 
 
 --- Murakkab WHERE bandi so'rovlari
@@ -60,7 +62,7 @@ DELETE FROM courses WHERE id = '95b03502-4ce3-4dd3-90e8-11836029fad7'
 -- Muayyan o'qituvchi tomonidan o'qitiladigan barcha kurslarni oling. 
 SELECT * FROM courses WHERE instructor = 'Dr. Jane Smith';
 -- Muayyan jadval oralig'ida kurslarga yozilgan barcha talabalarni oling. 
-SELECT students.* from students JOIN enrollments ON students.id = entrollments.student_id WHERE enrollments.enrollment_date BETWEEN '2024-01-01' AND '2025-01-01';
+SELECT students.* from students JOIN enrollments ON students.id = enrollments.student_id WHERE enrollments.enrollment_date BETWEEN '2024-01-01' AND '2025-01-01';
 -- Belgilangan raqamdan past bo'lgan barcha kurslarni oling. 
 SELECT * FROM courses WHERE max_students < 30;
 -- Ma'lum miqdordagi kurslarga ro'yxatdan o'tgan barcha talabalarni oling.

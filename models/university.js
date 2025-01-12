@@ -5,18 +5,18 @@ class University {
     this.id = id;
   }
 
-  async getAllPatients() {
+  async getAllStudents() {
     try {
-      const result = await pool.query("SELECT * from patients");
+      const result = await pool.query("SELECT * from students");
       return result.rows;
     } catch (error) {
       console.log(error);
     }
   }
 
-  async getAllAppointments() {
+  async getAllCourses() {
     try {
-      const result = await pool.query("SELECT * from appointments");
+      const result = await pool.query("SELECT * from courses");
       return result.rows;
     } catch (error) {
       console.log(error);

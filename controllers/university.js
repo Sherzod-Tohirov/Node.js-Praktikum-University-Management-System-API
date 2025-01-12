@@ -1,13 +1,13 @@
 const University = require("../models/university");
 const university = new University();
 
-async function getAllPatients(_, res) {
-  const allPatients = await university.getAllPatients();
+async function getAllStudents(_, res) {
+  const allPatients = await university.getAllCourses();
   res.send(allPatients);
 }
 
-async function getAllAppointments(_, res) {
-  const allAppointments = await university.getAllAppointments();
+async function getAllCourses(_, res) {
+  const allAppointments = await university.getAllCourses();
   res.send(allAppointments);
 }
 
@@ -17,6 +17,6 @@ function getMainPage(_, res) {
 
 module.exports = {
   getMainPage,
-  getAllPatients,
-  getAllAppointments,
+  getAllStudents,
+  getAllCourses,
 };
