@@ -2,13 +2,13 @@ const University = require("../models/university");
 const university = new University();
 
 async function getAllStudents(_, res) {
-  const allPatients = await university.getAllCourses();
-  res.send(allPatients);
+  const allStudents = await university.getAllStudents();
+  res.send(allStudents);
 }
 
 async function getAllCourses(_, res) {
-  const allAppointments = await university.getAllCourses();
-  res.send(allAppointments);
+  const allCourses = await university.getAllCourses();
+  res.send(allCourses);
 }
 
 function getMainPage(_, res) {
