@@ -6,11 +6,6 @@ async function getAllStudents(_, res) {
   res.send(allStudents);
 }
 
-async function getAllCourses(_, res) {
-  const allCourses = await university.getAllCourses();
-  res.send(allCourses);
-}
-
 function getMainPage(_, res) {
   res.send("<h1>University home page</h1>");
 }
@@ -18,5 +13,4 @@ function getMainPage(_, res) {
 module.exports = {
   getMainPage,
   getAllStudents,
-  getAllCourses,
 };
