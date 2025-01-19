@@ -14,6 +14,18 @@ class Enrollment {
     }
   }
 
+  async getEnrollmentById(enrollmentId) {
+    try {
+      const result = await pool.query(
+        "SELECT * from enrollments WHERE id = $1",
+        [enrollmentId]
+      );
+      return result.rows[0];
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   async addNewEnrollment(enrollment) {
     try {
       const result = await pool.query(

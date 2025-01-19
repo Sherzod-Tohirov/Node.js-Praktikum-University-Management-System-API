@@ -6,6 +6,12 @@ async function getAllStudents(_, res) {
   res.send(allStudents);
 }
 
+async function getStudentById(req, res) {
+  const studentId = req.params.id;
+  const student = await student.getStudentById(studentId);
+  res.send(student);
+}
+
 async function addNewStudent(req, res) {
   const student = req.body;
   const newStudent = await student.addNewStudent(student);
@@ -24,4 +30,10 @@ async function deleteStudent(req, res) {
   res.send(deletedStudent);
 }
 
-export { getAllStudents, addNewStudent, updateStudent, deleteStudent };
+export {
+  getAllStudents,
+  getStudentById,
+  addNewStudent,
+  updateStudent,
+  deleteStudent,
+};

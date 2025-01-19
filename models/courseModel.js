@@ -21,6 +21,17 @@ class Course {
     }
   }
 
+  async getCourseById(courseId) {
+    try {
+      const result = await pool.query("SELECT * from courses WHERE id = $1", [
+        courseId,
+      ]);
+      return result.rows[0];
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   async editCourse(course) {
     try {
       const result = await pool.query(

@@ -1,15 +1,9 @@
 const { Router } = require("express");
-
-const {
-  getMainPage,
-  getAllStudents,
-  getAllCourses,
-} = require("../controllers/university");
-
 const router = new Router();
 
+const { getMainPage } = require("../controllers/university");
+
+
 router.get("/", getMainPage);
-router.get("/all-students", getAllStudents);
-router.get("/all-courses", getAllCourses);
 
 module.exports = router;

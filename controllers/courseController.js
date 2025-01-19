@@ -6,6 +6,12 @@ async function getAllCourses(_, res) {
   res.send(allCourses);
 }
 
+async function getCourseById(req, res) {
+  const courseId = req.params.id;
+  const course = await course.getCourseById(courseId);
+  res.send(course);
+}
+
 async function addNewCourse(req, res) {
   const course = req.body;
   const newCourse = await course.addNewCourse(course);
@@ -26,6 +32,7 @@ async function deleteCourse(req, res) {
 
 module.exports = {
   getAllCourses,
+  getCourseById,
   addNewCourse,
   updateCourse,
   deleteCourse,

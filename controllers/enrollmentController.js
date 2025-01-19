@@ -5,6 +5,11 @@ async function getAllEnrollments(_, res) {
   const allEnrollments = await enrollment.getAllEnrollments();
   res.send(allEnrollments);
 }
+async function getEnrollmentById(req, res) {
+  const enrollmentId = req.params.id;
+  const enrollment = await enrollment.getEnrollmentById(enrollmentId);
+  res.send(enrollment);
+}
 async function addNewEnrollment(req, res) {
   const enrollment = req.body;
   const newEnrollment = await enrollment.addNewEnrollment(enrollment);
@@ -19,12 +24,13 @@ async function updateEnrollment(req, res) {
 
 async function deleteEnrollment(req, res) {
   const enrollmentId = req.params.id;
-  const deletedEnrollment = await enrollment.deletedEnrollment(enrollmentId);
+  const deletedEnrollment = await enrollment.deleteEnrollment(enrollmentId);
   res.send(deletedEnrollment);
 }
 
 export {
   getAllEnrollments,
+  getEnrollmentById,
   addNewEnrollment,
   updateEnrollment,
   deleteEnrollment,

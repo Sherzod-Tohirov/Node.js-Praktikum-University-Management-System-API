@@ -16,6 +16,17 @@ class Student {
     }
   }
 
+  async getStudentById(studentId) {
+    try {
+      const result = await pool.query("SELECT * from students WHERE id = $1", [
+        studentId,
+      ]);
+      return result.rows[0];
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   async editStudent(student) {
     try {
       const result = await pool.query(
