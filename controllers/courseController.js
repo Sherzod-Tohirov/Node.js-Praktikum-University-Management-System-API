@@ -1,26 +1,26 @@
-const University = require("../models/university");
-const university = new University();
+const Course = require("../models/courseModel");
+const course = new Course();
 
 async function getAllCourses(_, res) {
-  const allCourses = await university.getAllCourses();
+  const allCourses = await course.getAllCourses();
   res.send(allCourses);
 }
 
 async function addNewCourse(req, res) {
   const course = req.body;
-  const newCourse = await university.addNewCourse(course);
+  const newCourse = await course.addNewCourse(course);
   res.send(newCourse);
 }
 
 async function updateCourse(req, res) {
   const course = req.body;
-  const updatedCourse = await university.editCourse(course);
+  const updatedCourse = await course.editCourse(course);
   res.send(updatedCourse);
 }
 
 async function deleteCourse(req, res) {
   const courseId = req.params.id;
-  const deletedCourse = await university.deleteCourse(courseId);
+  const deletedCourse = await course.deleteCourse(courseId);
   res.send(deletedCourse);
 }
 
