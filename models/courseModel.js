@@ -1,9 +1,9 @@
 const pool = require("../db/config");
 
 class Course {
-    constructor(id) {
-        this.id = id;   
-    }
+  constructor(id) {
+    this.id = id;
+  }
   async addNewCourse(course) {
     try {
       const result = await pool.query(
@@ -39,12 +39,14 @@ class Course {
     }
   }
 
-  async deleteCourse(courseId) {\
+  async deleteCourse(courseId) {
     try {
-      const result = await pool.query("DELETE FROM courses WHERE id = $1 RETURNING *", [courseId]);
+      const result = await pool.query(
+        "DELETE FROM courses WHERE id = $1 RETURNING *",
+        [courseId]
+      );
       return result.rows[0];
-
-    }catch(err) {
+    } catch (err) {
       console.log(err);
     }
   }

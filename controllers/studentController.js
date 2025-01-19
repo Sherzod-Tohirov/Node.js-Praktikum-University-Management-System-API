@@ -5,6 +5,7 @@ async function getAllStudents(_, res) {
   const allStudents = await student.getAllStudents();
   res.send(allStudents);
 }
+
 async function addNewStudent(req, res) {
   const student = req.body;
   const newStudent = await student.addNewStudent(student);
