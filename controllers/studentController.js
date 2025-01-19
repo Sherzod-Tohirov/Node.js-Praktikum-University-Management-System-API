@@ -30,7 +30,7 @@ async function deleteStudent(req, res) {
   res.send(deletedStudent);
 }
 
-export {
+module.exports = {
   getAllStudents,
   getStudentById,
   addNewStudent,

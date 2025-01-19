@@ -28,7 +28,7 @@ async function deleteEnrollment(req, res) {
   res.send(deletedEnrollment);
 }
 
-export {
+module.exports = {
   getAllEnrollments,
   getEnrollmentById,
   addNewEnrollment,
